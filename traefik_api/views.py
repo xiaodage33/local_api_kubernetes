@@ -8,6 +8,21 @@ def trae(request):
     r0 = requests.get("http://192.168.10.18:8580/api/providers")
 
     data1=r0.json()
-    print(data1)
+    # print(data1)
+    data_list = []
+    for  key in data1.keys():
+        # print(data1[key])
+        for ikey in data1[key].keys():
+            # print(data1[key][ikey])
+            for iikey in data1[key][ikey].keys():
+                dic = {}
 
-    return JsonResponse({"data":data1})
+                print("哈哈",iikey)
+
+
+                dic['ingress'] =iikey
+                data_list.append((dic))
+            print(data_list)
+
+
+            return JsonResponse({"data":data_list})
