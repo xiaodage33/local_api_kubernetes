@@ -13,16 +13,11 @@ def trae(request):
     for  key in data1.keys():
         # print(data1[key])
         for ikey in data1[key].keys():
-            # print(data1[key][ikey])
-            for iikey in data1[key][ikey].keys():
+            # print(data1[key][ikey])  #里面key  kubernetes 中   fornetend 和backends ，
+            for iikey in data1[key][ikey].keys():  #取kubernetes中fornentd
                 dic = {}
-
-                print("哈哈",iikey)
-
-
                 dic['ingress'] =iikey
                 data_list.append((dic))
             print(data_list)
-
-
             return JsonResponse({"data":data_list})
+

@@ -19,4 +19,5 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('trae/',include('traefik_api.urls')),
+    path('k8s/',include('k8s.urls')),
 ]
