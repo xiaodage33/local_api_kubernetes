@@ -33,7 +33,7 @@ def getLogInfo(request):
     info = request.body
     info = info.decode()
     cmd_1 = "{print $1}"  #不然命令不识别print $1
-    cmd = "kubectl logs  -n `kubectl  get pods --all-namespaces | grep {0} | awk '{1}'`  {0}  --tail 200 ".format(info,cmd_1)
+    cmd = "kubectl logs  -n `kubectl  get pods --all-namespaces | grep {0} | awk '{1}'`  {0}  --tail 2000 ".format(info,cmd_1)
     print("命令是",cmd)
 
 

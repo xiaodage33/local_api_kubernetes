@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'traefik_api',
     'k8s',
+    'Student',
 ]
 
 MIDDLEWARE = [
