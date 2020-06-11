@@ -41,3 +41,25 @@ def getLogInfo(request):
     data = ssh_link.ssh_linking(cmd)
     print("hehhe",data)
     return JsonResponse({'data':data})
+
+def getErrorLog(request):
+    cmd = "for i in `kubectl get pods -n scf |sed -e 1d | awk '{print $1}'`;do kubectl logs $i -n scf  | grep Exception:  >> /dev/null 2>&1 ; if [ `echo $?` -eq 0 ];then echo '有问题'$i ;fi  done | wc -l"
+    data_num = ssh_link.ssh_linking(cmd)
+    #抛出多有错误的pod名字
+    cmd1 = "for i in `kubectl get pods -n scf |sed -e 1d | awk '{print $1}'`;do kubectl logs $i -n scf  | grep Exception:  >> /dev/null 2>&1 ; if [ `echo $?` -eq 0 ];then echo $i ;fi  done"
+
+    # cmd1 = "for i in `kubectl get pods -n scf |sed -e 1d | awk '{print $1}'`;do kubectl logs $i -n scf  | grep Exception:  >> /dev/null 2>&1 ; if [ `echo $?` -eq 0 ];then echo $i ;fi  done"
+
+    data_podname = ssh_link.ssh_linking("kubectl get pods -n scf |sed -e 1d | awk '{print $1}'") #暂时测试所有pod名字抛出来
+    get_data = data_podname.split()
+    print("哈哈",data_podname)
+    data_podname_list = []
+    for key in get_data:
+        print("乐乐",key)
+        dic = {}
+        dic['data_podname'] = key
+        data_podname_list.append((dic))
+        # print(data_podname_list)
+    # return JsonResponse({"data": data_podname_list})
+
+    return  JsonResponse({'data_num':data_num,'data_podname':data_podname_list})
