@@ -18,6 +18,6 @@ def trae(request):
                 dic = {}
                 dic['ingress'] =iikey
                 data_list.append((dic))
-            print(data_list)
+            # print(data_list)
             return JsonResponse({"data":data_list})
 
