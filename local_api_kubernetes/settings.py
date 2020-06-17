@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'middle.cors.CorsMiddleWare'
+    'middle.cors.CorsMiddleWare',
 ]
 
 ROOT_URLCONF = 'local_api_kubernetes.urls'

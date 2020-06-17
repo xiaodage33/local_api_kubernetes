@@ -72,7 +72,6 @@ def log_error_file(request):
 
     cmd_num = "ls  /var/ftp/pub/log/scf/  | grep Exception | awk -F '.' '{print $1}' | wc -l"
     data_num = ssh_link.ssh_linking(cmd_num)
-    print(data_num)
     cmd = "ls  /var/ftp/pub/log/scf/  | grep Exception | awk -F '.' '{print $1}'"
     get_data = ssh_link.ssh_linking(cmd)
     get_data_ok = get_data.split()  #需要转一下
